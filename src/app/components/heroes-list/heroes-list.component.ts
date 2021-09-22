@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { pluck } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-heroes-list',
@@ -8,12 +8,11 @@ import { pluck } from 'rxjs/operators';
   styleUrls: ['./heroes-list.component.scss'],
 })
 export class HeroesListComponent implements OnInit {
-  private api: string =
-    'http://ddragon.leagueoflegends.com/cdn/9.3.1/data/en_US/champion.json';
+  public characters: Observable<any>;
 
-  constructor(private http: HttpClient) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.http.get(this.api).pipe(pluck('data')).subscribe(console.log);
+    this.characters = this.dataService.getCharacters();
   }
 }

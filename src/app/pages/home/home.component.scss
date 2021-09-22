@@ -1,0 +1,29 @@
+.home {
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: -10;
+
+  &-background {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    justify-content: center;
+    width: 100%;
+
+    &__video {
+      position: absolute;
+      top: -9999px;
+      right: -9999px;
+      bottom: -9999px;
+      left: -9999px;
+      margin: auto;
+      min-width: 100%;
+      min-height: 100%;
+      filter: blur(2px);
+      opacity: 0.9;
+    }
+  }
+}
