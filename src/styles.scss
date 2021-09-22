@@ -14,3 +14,15 @@
   padding: 0;
   font-family: var(--main-font);
 }
+
+.btn {
+  background-color: #111;
+  border: none;
+  box-shadow: 3px 3px 15px 3px #fff;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+}

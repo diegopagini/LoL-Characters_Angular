@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -8,11 +9,11 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./heroes-list.component.scss'],
 })
 export class HeroesListComponent implements OnInit {
-  public characters: Observable<any>;
+  public characters$: Observable<any>;
 
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.characters = this.dataService.getCharacters();
+    this.characters$ = this.dataService.getCharacters().pipe(tap(console.log));
   }
 }

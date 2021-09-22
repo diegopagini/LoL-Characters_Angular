@@ -1,1 +1,3 @@
-<p>{{ characters | async | json }}</p>
+<ng-container *ngIf="characters$ | async as characters">
+  <p *ngFor="let character of characters">{{ character.name }}</p>
+</ng-container>

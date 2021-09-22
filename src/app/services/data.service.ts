@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { pluck } from 'rxjs/operators';
+import { map, pluck } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +13,9 @@ export class DataService {
   constructor(private http: HttpClient) {}
 
   public getCharacters(): Observable<any> {
-    return this.http.get(this.api).pipe(pluck('data'));
+    return this.http.get(this.api).pipe(
+      pluck('data'),
+      map((data: any) => Object.values(data))
+    );
   }
 }
