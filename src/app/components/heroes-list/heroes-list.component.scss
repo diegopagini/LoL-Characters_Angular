@@ -1,0 +1,7 @@
+.heroe-list {
+  background-color: var(--app-black);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  margin: 0 auto;
+  max-width: 1440px;
+}
