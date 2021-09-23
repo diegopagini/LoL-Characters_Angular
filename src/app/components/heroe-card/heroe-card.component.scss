@@ -1,0 +1,10 @@
+.heroe-card {
+  background-color: rgba($color: transparent, $alpha: 0.1);
+  height: 25rem;
+  width: 100%;
+
+  &__title {
+    color: #fff;
+    text-align: center;
+  }
+}

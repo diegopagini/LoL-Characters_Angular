@@ -7,8 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeroeCardComponent implements OnInit {
   @Input() heroe: any;
+  public bgHeroeImage: string;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.bgHeroeImage = `../../../assets/img/champion/loading/${this.heroe.name}_0.jpg `;
+  }
 }
