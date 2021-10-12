@@ -1,5 +1,8 @@
 <ng-container *ngIf="heroe">
-  <section class="heroe-card">
+  <section
+    class="heroe-card"
+    [style.background-image]="heroe.name | domSanitizer"
+  >
     <h1 class="heroe-card__title">{{ heroe.name }}</h1>
   </section>
 </ng-container>

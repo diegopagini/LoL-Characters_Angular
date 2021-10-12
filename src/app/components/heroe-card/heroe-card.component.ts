@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Hero } from 'src/app/interfaces/hero.interface';
 
 @Component({
   selector: 'app-heroe-card',
@@ -6,12 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./heroe-card.component.scss'],
 })
 export class HeroeCardComponent implements OnInit {
-  @Input() heroe: any;
+  @Input() heroe: Hero;
   public bgHeroeImage: string;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.bgHeroeImage = `../../../assets/img/champion/loading/${this.heroe.name}_0.jpg `;
+    console.log(this.heroe);
   }
 }
