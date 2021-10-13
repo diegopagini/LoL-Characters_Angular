@@ -14,6 +14,6 @@ export class HeroesListComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.characters$ = this.dataService.getCharacters().pipe(tap(console.log));
+    this.characters$ = this.dataService.getCharacters();
   }
 }

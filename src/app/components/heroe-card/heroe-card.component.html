@@ -1,6 +1,7 @@
 <ng-container *ngIf="heroe">
   <section
     class="heroe-card animated fadeIn"
+    routerLink="/characters/{{ heroe.id }}"
     [style.background-image]="heroe.id | domSanitizer"
   >
     <h1 class="heroe-card__title">{{ heroe.name }}</h1>

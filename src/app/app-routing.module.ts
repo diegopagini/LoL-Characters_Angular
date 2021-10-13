@@ -15,6 +15,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'characters/:id',
+    loadChildren: () =>
+      import('./pages/character/character.module').then(
+        (m) => m.CharacterModule
+      ),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

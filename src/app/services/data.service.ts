@@ -18,4 +18,14 @@ export class DataService {
       map((data: any) => Object.values(data))
     );
   }
+
+  public getCharacterById(id: string): Observable<any> {
+    return this.http.get<Hero>(api).pipe(
+      pluck('data'),
+      map((data: any) => Object.values(data)),
+      map((heroes) => {
+        return heroes.filter((hero: any) => hero.id === id);
+      })
+    );
+  }
 }
