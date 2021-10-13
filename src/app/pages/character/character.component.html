@@ -1,1 +1,15 @@
-<div>{{ hero$ | async | json }}</div>
+<ng-container *ngIf="hero$ | async as hero">
+  <section class="character">
+    <main class="character__hero">
+      <img
+        class="character__hero-img"
+        src="/assets/img/champion/splash/{{ hero.id }}_0.jpg"
+        [alt]="hero.name"
+      />
+      <div class="character__hero-info">
+        <h2>{{ hero.title }}</h2>
+        <h1>{{ hero.name }}</h1>
+      </div>
+    </main>
+  </section>
+</ng-container>

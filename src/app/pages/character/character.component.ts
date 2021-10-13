@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 import { Hero } from 'src/app/interfaces/hero.interface';
 import { DataService } from 'src/app/services/data.service';
 
@@ -20,7 +20,9 @@ export class CharacterComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.pipe(take(1)).subscribe((param: Params) => {
-      this.hero$ = this.dataService.getCharacterById(param.id);
+      this.hero$ = this.dataService
+        .getCharacterById(param.id)
+        .pipe(map((data) => Object.assign({}, data[0])));
     });
   }
 }
