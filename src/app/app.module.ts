@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { ComponentsModule } from './components/components.module';
-import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,7 +12,6 @@ import { PagesModule } from './pages/pages.module';
     BrowserModule,
     AppRoutingModule,
     ComponentsModule,
-    PagesModule,
     StoreModule.forRoot({}, {}),
   ],
   providers: [],

@@ -1,7 +1,7 @@
 <ng-container *ngIf="heroe">
   <section
-    class="heroe-card"
-    [style.background-image]="heroe.name | domSanitizer"
+    class="heroe-card animated fadeIn"
+    [style.background-image]="heroe.id | domSanitizer"
   >
     <h1 class="heroe-card__title">{{ heroe.name }}</h1>
   </section>
