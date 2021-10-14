@@ -14,7 +14,6 @@
     <section class="character__hero-rol">
       <p>{{ hero.blurb }}</p>
       <div class="rol">
-        <p>Rol:</p>
         <p *ngFor="let rol of hero.tags" class="tags">{{ rol | uppercase }}</p>
       </div>
     </section>

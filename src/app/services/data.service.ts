@@ -19,6 +19,16 @@ export class DataService {
     );
   }
 
+  public getFilteredCharacters(filter: string): Observable<any> {
+    return this.http.get<Hero[]>(api).pipe(
+      pluck('data'),
+      map((data: any) => Object.values(data)),
+      map((heroes) => {
+        return heroes.filter((hero: any) => hero.tags.includes(filter));
+      })
+    );
+  }
+
   public getCharacterById(id: string): Observable<any> {
     return this.http.get<Hero>(api).pipe(
       pluck('data'),

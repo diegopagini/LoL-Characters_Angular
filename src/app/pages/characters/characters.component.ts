@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.scss'],
 })
-export class CharactersComponent {}
+export class CharactersComponent {
+  public filterOption: string;
+
+  public filterCharacters(event: string): void {
+    this.filterOption = event;
+  }
+}

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, take, tap } from 'rxjs/operators';
-import { Hero } from 'src/app/interfaces/hero.interface';
+import { map, take } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -30,8 +29,7 @@ export class CharacterComponent implements OnInit {
           };
           object.stats = stats;
           return object;
-        }),
-        tap(console.log)
+        })
       );
     });
   }

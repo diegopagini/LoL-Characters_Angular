@@ -1,0 +1,8 @@
+<nav class="search">
+  <div class="search-title">Filter By:</div>
+  <select class="search-roles" (change)="emitFilter($event)">
+    <option class="search-role" *ngFor="let role of roles" [value]="role">
+      {{ role }}
+    </option>
+  </select>
+</nav>

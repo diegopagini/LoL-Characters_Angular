@@ -1,0 +1,34 @@
+@import "../../../assets/breakpoints.scss";
+
+.search {
+  align-items: center;
+  background-color: var(--app-black);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1472px;
+
+  @include mobile {
+    height: max-content;
+  }
+
+  &-title {
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  &-roles {
+    font-size: 1.25rem;
+    list-style: none;
+    margin: 2rem;
+    text-transform: capitalize;
+    width: 50%;
+  }
+
+  &-role {
+    cursor: pointer;
+    text-transform: capitalize;
+    padding: 1rem;
+  }
+}

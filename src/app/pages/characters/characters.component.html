@@ -1,1 +1,2 @@
-<app-heroes-list></app-heroes-list>
+<app-search (filter)="filterCharacters($event)"></app-search>
+<app-heroes-list [filterOption]="filterOption"></app-heroes-list>
