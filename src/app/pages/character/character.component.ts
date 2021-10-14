@@ -11,7 +11,7 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./character.component.scss'],
 })
 export class CharacterComponent implements OnInit {
-  public hero$: Observable<Hero>;
+  public hero$: Observable<any>;
 
   constructor(
     private dataService: DataService,
@@ -20,9 +20,19 @@ export class CharacterComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.pipe(take(1)).subscribe((param: Params) => {
-      this.hero$ = this.dataService
-        .getCharacterById(param.id)
-        .pipe(map((data) => Object.assign({}, data[0])));
+      this.hero$ = this.dataService.getCharacterById(param.id).pipe(
+        map((data) => Object.assign({}, data[0])),
+        map((data) => {
+          const object: any = { ...data };
+          const stats = {
+            stats: Object.keys(object.stats),
+            values: Object.values(object.stats),
+          };
+          object.stats = stats;
+          return object;
+        }),
+        tap(console.log)
+      );
     });
   }
 }

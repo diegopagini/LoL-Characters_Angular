@@ -1,6 +1,6 @@
 <ng-container *ngIf="hero$ | async as hero">
-  <section class="character">
-    <main class="character__hero">
+  <main class="character">
+    <section class="character__hero">
       <img
         class="character__hero-img"
         src="/assets/img/champion/splash/{{ hero.id }}_0.jpg"
@@ -10,6 +10,27 @@
         <h2>{{ hero.title }}</h2>
         <h1>{{ hero.name }}</h1>
       </div>
-    </main>
-  </section>
+    </section>
+    <section class="character__hero-rol">
+      <p>{{ hero.blurb }}</p>
+      <div class="rol">
+        <p>Rol:</p>
+        <p *ngFor="let rol of hero.tags" class="tags">{{ rol | uppercase }}</p>
+      </div>
+    </section>
+    <section class="character__hero-stats">
+      <div class="stat">
+        <span *ngFor="let stat of hero.stats.stats">{{ stat }}</span>
+      </div>
+      <div class="values">
+        <span *ngFor="let value of hero.stats.values">{{ value }}</span>
+      </div>
+    </section>
+
+    <div class="character-button-container">
+      <button type="button" tabindex="0" class="btn" routerLink="/characters">
+        Back
+      </button>
+    </div>
+  </main>
 </ng-container>
