@@ -1,9 +1,13 @@
 .spinner {
   align-items: center;
+  background-color: var(--app-black);
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 114px);
   justify-content: center;
-  width: 100vw;
+  margin: 0 auto;
+  max-width: 1470px;
+  overflow: hidden;
+  width: 100%;
 
   .sk-fading-circle {
     margin: 100px auto;
@@ -26,7 +30,7 @@
     margin: 0 auto;
     width: 15%;
     height: 15%;
-    background-color: #333;
+    background-color: #fff;
     border-radius: 100%;
     -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
     animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;

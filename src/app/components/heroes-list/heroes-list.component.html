@@ -1,11 +1,10 @@
-<section
-  class="heroe-list"
-  *ngIf="characters$ | async as characters; else spinner"
->
-  <ng-container *ngFor="let character of characters">
-    <app-heroe-card [heroe]="character"></app-heroe-card>
-  </ng-container>
-</section>
+<ng-container *ngIf="characters$ | async as characters">
+  <section class="heroe-list" *ngIf="characters.length > 0; else spinner">
+    <ng-container *ngFor="let character of characters">
+      <app-heroe-card [heroe]="character"></app-heroe-card>
+    </ng-container>
+  </section>
+</ng-container>
 
 <ng-template #spinner>
   <app-spinner></app-spinner>

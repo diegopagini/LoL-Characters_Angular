@@ -6,7 +6,6 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -16,6 +15,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class HeroesListComponent implements OnInit, OnChanges {
   @Input() filterOption: string;
+  @Input() search: string;
   public characters$: Observable<any>;
 
   constructor(private dataService: DataService) {}
@@ -25,16 +25,32 @@ export class HeroesListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.filterCharacters();
+    if (changes.filterOption) {
+      this.filterCharacters();
+    }
+
+    if (changes.search) {
+      this.searchCaracter();
+    }
   }
 
-  private filterCharacters() {
+  private filterCharacters(): void {
     if (this.filterOption !== 'All') {
       this.characters$ = this.dataService.getFilteredCharacters(
         this.filterOption
       );
     } else {
       this.characters$ = this.dataService.getCharacters();
+    }
+  }
+
+  private searchCaracter(): void {
+    if (this.search) {
+      if (this.search.length > 0) {
+        this.characters$ = this.dataService.getCharacter(this.search);
+      } else {
+        this.characters$ = this.dataService.getCharacters();
+      }
     }
   }
 }

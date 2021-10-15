@@ -1,8 +1,20 @@
-<nav class="search">
-  <div class="search-title">Filter by role</div>
-  <select class="search-roles" (change)="emitFilter($event)">
-    <option class="search-role" *ngFor="let role of roles" [value]="role">
-      {{ role }}
-    </option>
-  </select>
+<nav>
+  <section class="filter">
+    <div class="filter-title">Filter by role</div>
+    <select class="filter-roles" (change)="emitFilter($event)">
+      <option class="filter-role" *ngFor="let role of roles" [value]="role">
+        {{ role }}
+      </option>
+    </select>
+  </section>
+  <section class="search">
+    <input
+      class="search-input"
+      autocomplete="off"
+      type="text"
+      placeholder="Search your Hero"
+      [(ngModel)]="searchValue"
+      (ngModelChange)="emitSearch()"
+    />
+  </section>
 </nav>

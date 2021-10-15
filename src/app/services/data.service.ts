@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, pluck } from 'rxjs/operators';
+import { filter, map, pluck } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Hero } from '../interfaces/hero.interface';
 
@@ -16,6 +16,24 @@ export class DataService {
     return this.http.get<Hero[]>(api).pipe(
       pluck('data'),
       map((data: any) => Object.values(data))
+    );
+  }
+
+  public getCharacter(nameOfCharacter: string): Observable<Hero[]> {
+    return this.http.get<Hero[]>(api).pipe(
+      pluck('data'),
+      map((data: any) => Object.values(data)),
+      map((data: any) => {
+        const heroes: Hero[] = [];
+        let search = nameOfCharacter.toLowerCase();
+        data.forEach((el: any) => {
+          let name = el.name.toLowerCase();
+          if (name.includes(search)) {
+            heroes.push(el);
+          }
+        });
+        return heroes;
+      })
     );
   }
 

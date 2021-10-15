@@ -1,13 +1,18 @@
 @import "../../../assets/breakpoints.scss";
 
+nav {
+  background-color: var(--app-black);
+  margin: 0 auto;
+  max-width: 1472px;
+}
+
+.filter,
 .search {
   align-items: center;
-  background-color: var(--app-black);
   color: #fff;
   display: flex;
   justify-content: center;
-  margin: 0 auto;
-  max-width: 1472px;
+  width: 100%;
 
   @include mobile {
     height: max-content;
@@ -30,5 +35,11 @@
     cursor: pointer;
     text-transform: capitalize;
     padding: 1rem;
+  }
+
+  &-input {
+    color: var(--app-black);
+    font-size: 1.25rem;
+    text-align: center;
   }
 }
