@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
@@ -14,7 +14,8 @@ export class CharacterComponent implements OnInit {
 
   constructor(
     private dataService: DataService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,5 +33,9 @@ export class CharacterComponent implements OnInit {
         })
       );
     });
+  }
+
+  public back(): void {
+    this.router.navigateByUrl('/characters');
   }
 }
