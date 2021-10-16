@@ -9,7 +9,7 @@ export interface Hero {
   image: Image;
   tags: string[];
   partype: string;
-  stats: { [key: string]: number };
+  stats: Stats;
 }
 
 export interface Image {
@@ -27,4 +27,9 @@ export interface Info {
   defense: number;
   magic: number;
   difficulty: number;
+}
+
+export interface Stats {
+  stats: string[];
+  values: number[];
 }

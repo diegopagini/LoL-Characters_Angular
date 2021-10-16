@@ -17,13 +17,15 @@
         <p *ngFor="let rol of hero.tags" class="tags">{{ rol | uppercase }}</p>
       </div>
     </section>
-    <section class="character__hero-stats">
-      <div class="stat">
-        <span *ngFor="let stat of hero.stats.stats">{{ stat }}</span>
-      </div>
-      <div class="values">
-        <span *ngFor="let value of hero.stats.values">{{ value }}</span>
-      </div>
+    <section class="character__hero-charts">
+      <ngx-charts-pie-chart
+        [view]="view"
+        scheme="cool"
+        [results]="data"
+        [gradient]="true"
+        [labels]="true"
+      >
+      </ngx-charts-pie-chart>
     </section>
 
     <div class="character-button-container">

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, zip } from 'rxjs';
 import { map, take } from 'rxjs/operators';
+import { Stats } from 'src/app/interfaces/hero.interface';
+import { BreakpointService } from 'src/app/services/breakpoint.service';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -11,14 +13,20 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class CharacterComponent implements OnInit {
   public hero$: Observable<any>;
+  public data: Stats[] = [];
+  public view: [number, number];
+  private isMobile$: Observable<boolean>;
 
   constructor(
     private dataService: DataService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private breakpointService: BreakpointService
   ) {}
 
   ngOnInit(): void {
+    this.isMobile$ = this.breakpointService.isMobile$();
+
     this.activatedRoute.params.pipe(take(1)).subscribe((param: Params) => {
       this.hero$ = this.dataService.getCharacterById(param.id).pipe(
         map((data) => Object.assign({}, data[0])),
@@ -33,9 +41,32 @@ export class CharacterComponent implements OnInit {
         })
       );
     });
+
+    this.configureRadar();
   }
 
   public back(): void {
     this.router.navigateByUrl('/characters');
+  }
+
+  private configureRadar() {
+    zip(this.isMobile$, this.hero$).subscribe((data) => {
+      const [mobile, hero] = data;
+
+      if (mobile) {
+        this.view = [300, 300];
+      } else {
+        this.view = [900, 500];
+      }
+
+      const results: any = [];
+      for (let i = 0; i < hero.stats.stats.length; i++) {
+        results.push({
+          name: hero.stats.stats[i],
+          value: hero.stats.values[i],
+        });
+      }
+      this.data = results;
+    });
   }
 }
