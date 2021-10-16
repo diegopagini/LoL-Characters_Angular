@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { filter, map, pluck } from 'rxjs/operators';
+import { map, pluck } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Hero } from '../interfaces/hero.interface';
 

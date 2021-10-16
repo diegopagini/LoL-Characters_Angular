@@ -51,6 +51,8 @@ export class HeroesListComponent implements OnInit, OnChanges {
       } else {
         this.characters$ = this.dataService.getCharacters();
       }
+    } else {
+      this.characters$ = this.dataService.getCharacters();
     }
   }
 }
